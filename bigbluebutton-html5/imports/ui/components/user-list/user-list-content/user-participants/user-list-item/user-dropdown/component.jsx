@@ -523,7 +523,7 @@ class UserDropdown extends PureComponent {
 
     const iconUser = user.emoji !== 'none'
       ? (<Icon iconName={normalizeEmojiName(user.emoji)} />)
-      : user.name.toLowerCase().slice(0, 2);
+      : (<Icon iconName={"user"} />);
 
     const iconVoiceOnlyUser = (<Icon iconName="audio_on" />);
     const userIcon = isVoiceOnly ? iconVoiceOnlyUser : iconUser;
