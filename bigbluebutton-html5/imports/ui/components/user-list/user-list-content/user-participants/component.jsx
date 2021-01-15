@@ -176,12 +176,7 @@ class UserParticipants extends Component {
           !compact
             ? (
               <div className={styles.container}>
-                <h2 className={styles.smallTitle}>
-                  {intl.formatMessage(intlMessages.usersTitle)}
-                  &nbsp;(
-                  {users.length}
-                  )
-                </h2>
+
                 {currentUser.role === ROLE_MODERATOR
                   ? (
                     <UserOptionsContainer {...{
