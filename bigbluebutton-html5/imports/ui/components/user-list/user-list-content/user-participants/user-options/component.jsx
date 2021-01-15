@@ -315,37 +315,11 @@ class UserOptions extends PureComponent {
     const { intl } = this.props;
 
     return (
-      <Dropdown
-        ref={(ref) => { this.dropdown = ref; }}
-        autoFocus={false}
-        isOpen={isUserOptionsOpen}
-        onShow={this.onActionsShow}
-        onHide={this.onActionsHide}
-        className={styles.dropdown}
-      >
-        <DropdownTrigger tabIndex={0}>
-          <Button
-            label={intl.formatMessage(intlMessages.optionsLabel)}
-            icon="settings"
-            ghost
-            color="primary"
-            hideLabel
-            className={styles.optionsButton}
-            size="sm"
-            onClick={() => null}
-          />
-        </DropdownTrigger>
-        <DropdownContent
-          className={styles.dropdownContent}
-          placement="right top"
-        >
-          <DropdownList>
-            {
-              this.renderMenuItems()
-            }
-          </DropdownList>
-        </DropdownContent>
-      </Dropdown>
+      <div className={styles.menuItems}>
+        {
+          this.renderMenuItems()
+        }
+      </div>
     );
   }
 }
