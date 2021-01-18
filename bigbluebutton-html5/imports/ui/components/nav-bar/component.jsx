@@ -112,9 +112,33 @@ class NavBar extends PureComponent {
             <Button
                ghost
                circle
-               className={styles.btnSettings}
+               className={cx(toggleBtnClasses)}
                onClick={() => null}
                icon="circle"
+            />
+
+            <Button
+               ghost
+               circle
+               className={cx(toggleBtnClasses)}
+               onClick={() => null}
+               icon="sad"
+            />
+
+            <Button
+               ghost
+               circle
+               className={cx(toggleBtnClasses)}
+               onClick={() => null}
+               icon="happy"
+            />
+
+            <Button
+               ghost
+               circle
+               className={cx(toggleBtnClasses)}
+               onClick={() => null}
+               icon="happy"
             />
 
             {isExpanded ? null
