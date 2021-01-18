@@ -108,6 +108,15 @@ class NavBar extends PureComponent {
               aria-expanded={isExpanded}
               accessKey={TOGGLE_USERLIST_AK}
             />
+
+            <Button
+               ghost
+               circle
+               className={styles.btnSettings}
+               onClick={() => null}
+               icon="circle"
+            />
+
             {isExpanded ? null
               : <Icon iconName="right_arrow" className={styles.arrowRight} />
             }
