@@ -87,7 +87,7 @@
     "app.userList.userOptions.manageUsersLabel": "Gerir utilizadores",
     "app.userList.userOptions.muteAllLabel": "Silenciar todos os utilizadores",
     "app.userList.userOptions.muteAllDesc": "Silenciar todos os utilizadores na sessão",
-    "app.userList.userOptions.clearAllLabel": "Limpar todos os ícones de estado",
+    "app.userList.userOptions.clearAllLabel": "Limpar ícones de status",
     "app.userList.userOptions.clearAllDesc": "Limpa o ícone de estado de todos os utilizadores",
     "app.userList.userOptions.muteAllExceptPresenterLabel": "Silenciar todos os utilizadores exceto o apresentador",
     "app.userList.userOptions.muteAllExceptPresenterDesc": "Silencia todos os utilizadores na sessão, exceto o apresentador",
