@@ -252,7 +252,7 @@ class UserOptions extends PureComponent {
         <DropdownListItem
           key={this.muteId}
           icon="mute"
-          label={intl.formatMessage(intlMessages.muteAllExceptPresenterLabel)}
+          label={"Só o apresentador pode falar"}
           description={intl.formatMessage(intlMessages.muteAllExceptPresenterDesc)}
           onClick={toggleMuteAllUsersExceptPresenter}
         />) : null
@@ -261,7 +261,7 @@ class UserOptions extends PureComponent {
         ? (
           <DropdownListItem
             icon="download"
-            label={intl.formatMessage(intlMessages.saveUserNames)}
+            label={"Salvar nomes dos alunos"}
             key={this.saveUsersNameId}
             onClick={this.onSaveUserNames}
           />)
