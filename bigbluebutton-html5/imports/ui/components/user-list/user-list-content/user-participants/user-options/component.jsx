@@ -234,7 +234,7 @@ class UserOptions extends PureComponent {
         <DropdownListItem
           key={this.clearStatusId}
           icon="clear_status"
-          label={intl.formatMessage(intlMessages.clearAllLabel)}
+          label={"Limpar ícones de status"}
           description={intl.formatMessage(intlMessages.clearAllDesc)}
           onClick={toggleStatus}
         />) : null
