@@ -1,5 +1,4 @@
 @import "../../stylesheets/variables/_all";
-@import "../../../stylesheets/variables/typography";
 
 :root {
   --mobile-nav-height: 5rem;
@@ -121,10 +120,4 @@
 }
 
 .btnSettings {
-}
-
-.renderIcon{
-  width: var(--font-size-large);
-  height: var(--font-size-large);
-  font-size: var(--font-size-base);
 }

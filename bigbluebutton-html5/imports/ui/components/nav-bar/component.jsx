@@ -89,7 +89,6 @@ class NavBar extends PureComponent {
     ariaLabel += hasUnreadMessages ? (` ${intl.formatMessage(intlMessages.newMessages)}`) : '';
 
     const renderIcon = (
-      <span className={styles.renderIcon}>
         <svg xmlns="http://www.w3.org/2000/svg" height="100%" version="1" viewBox="0 0 20 20">
           <g stroke="#000" fill="#000" strokeLinecap="square">
             <circle
@@ -108,7 +107,6 @@ class NavBar extends PureComponent {
             />
           </g>
         </svg>
-      </span>
     );
 
     return (
