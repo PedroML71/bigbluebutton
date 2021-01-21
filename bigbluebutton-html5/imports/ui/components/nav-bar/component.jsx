@@ -89,6 +89,7 @@ class NavBar extends PureComponent {
     ariaLabel += hasUnreadMessages ? (` ${intl.formatMessage(intlMessages.newMessages)}`) : '';
 
     const renderIcon = (
+      <span className="render-icon">
         <svg xmlns="http://www.w3.org/2000/svg" height="100%" version="1" viewBox="0 0 20 20">
           <g stroke="#000" fill="#000" strokeLinecap="square">
             <circle
@@ -107,6 +108,7 @@ class NavBar extends PureComponent {
             />
           </g>
         </svg>
+      </span>
     );
 
     return (
@@ -130,12 +132,16 @@ class NavBar extends PureComponent {
               accessKey={TOGGLE_USERLIST_AK}
             />
 
-            <Button
-               ghost
-               className={cx(toggleBtnClasses)}
-               onClick={() => null}
-               customIcon={renderIcon}
-            />
+            <div
+              className={cx(toggleBtnClasses)}
+              role="button"
+              tabIndex={0}
+              onClick={() => null}
+              
+            >
+              {renderIcon}
+
+            </div>
 
             {isExpanded ? null
               : <Icon iconName="right_arrow" className={styles.arrowRight} />
