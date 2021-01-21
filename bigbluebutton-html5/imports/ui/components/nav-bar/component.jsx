@@ -136,7 +136,7 @@ class NavBar extends PureComponent {
                ghost
                className={cx(toggleBtnClasses)}
                onClick={() => null}
-               customIcon={<i className="my-icon-class">{renderIcon}</i>}
+               customIcon={renderIcon}
             />
 
             {isExpanded ? null
