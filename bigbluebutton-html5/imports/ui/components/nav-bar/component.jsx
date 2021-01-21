@@ -88,6 +88,29 @@ class NavBar extends PureComponent {
     let ariaLabel = intl.formatMessage(intlMessages.toggleUserListAria);
     ariaLabel += hasUnreadMessages ? (` ${intl.formatMessage(intlMessages.newMessages)}`) : '';
 
+    const renderIcon = (
+      <span className={styles.renderIcon}>
+        <svg xmlns="http://www.w3.org/2000/svg" height="100%" version="1" viewBox="0 0 20 20">
+          <g stroke="#000" fill="#000" strokeLinecap="square">
+            <circle
+              fill="none"
+              strokeWidth="1"
+              r="9"
+              cx="10"
+              cy="10"
+            />
+            <circle
+              stroke="#000"
+              fill="#000"
+              r="4"
+              cx="10"
+              cy="10"
+            />
+          </g>
+        </svg>
+      </span>
+    );
+
     return (
       <div className={styles.navbar}>
         <div className={styles.top}>
@@ -111,34 +134,9 @@ class NavBar extends PureComponent {
 
             <Button
                ghost
-               circle
                className={cx(toggleBtnClasses)}
                onClick={() => null}
-               icon="circle"
-            />
-
-            <Button
-               ghost
-               circle
-               className={cx(toggleBtnClasses)}
-               onClick={() => null}
-               icon="sad"
-            />
-
-            <Button
-               ghost
-               circle
-               className={cx(toggleBtnClasses)}
-               onClick={() => null}
-               icon="happy"
-            />
-
-            <Button
-               ghost
-               circle
-               className={cx(toggleBtnClasses)}
-               onClick={() => null}
-               icon="happy"
+               customIcon={<i className="my-icon-class">{renderIcon}</i>}
             />
 
             {isExpanded ? null
