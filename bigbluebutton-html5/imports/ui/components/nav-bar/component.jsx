@@ -135,6 +135,10 @@ class NavBar extends PureComponent {
                icon="happy"
             />
 
+            <div className={cx(toggleBtnClasses)}>
+              <img src="svgs/camera.svg"/>
+            </div>
+
             {isExpanded ? null
               : <Icon iconName="right_arrow" className={styles.arrowRight} />
             }
