@@ -144,7 +144,7 @@ class NavBar extends PureComponent {
                circle
                className={cx(toggleBtnClasses)}
                onClick={() => null}
-               customIcon={<img src="svgs/collect.svg"/>}
+               customIcon={<img src="svgs/collect.svg" width="16" height="16"/>}
             />
 
             {isExpanded ? null
