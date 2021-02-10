@@ -119,22 +119,6 @@ class NavBar extends PureComponent {
                icon="circle"
             />
 
-            <Button
-               ghost
-               circle
-               className={cx(toggleBtnClasses)}
-               onClick={() => null}
-               icon="sad"
-            />
-
-            <Button
-               ghost
-               circle
-               className={cx(toggleBtnClasses)}
-               onClick={() => null}
-               icon="happy"
-            />
-
             <div className={cx(toggleBtnClasses)}>
               <img src="svgs/camera.svg"/>
             </div>
@@ -145,6 +129,14 @@ class NavBar extends PureComponent {
                className={cx(toggleBtnClasses)}
                onClick={() => null}
                customIcon={<img src="svgs/collect.svg" width="16" height="16"/>}
+            />
+
+            <Button
+               ghost
+               circle
+               className={cx(toggleBtnClasses)}
+               onClick={() => null}
+               customIcon={<img src="svgs/face.svg" width="16" height="16"/>}
             />
 
             {isExpanded ? null
