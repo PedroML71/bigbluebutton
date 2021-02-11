@@ -127,6 +127,13 @@ class NavBar extends PureComponent {
                customIcon={<img src="svgs/face.svg" width="16" height="16"/>}
             />
 
+            <Button
+               ghost
+               circle
+               className={cx(toggleBtnClasses)}
+               onClick={() => null}
+               customIcon={<img src="svgs/heart.svg" width="16" height="16"/>}
+            />
             {isExpanded ? null
               : <Icon iconName="right_arrow" className={styles.arrowRight} />
             }
