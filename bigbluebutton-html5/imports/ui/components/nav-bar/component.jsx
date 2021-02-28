@@ -12,7 +12,7 @@ import Button from '../button/component';
 import RecordingIndicator from './recording-indicator/container';
 import TalkingIndicatorContainer from '/imports/ui/components/nav-bar/talking-indicator/container';
 import SettingsDropdownContainer from './settings-dropdown/container';
-
+import UserOptionsContainer from '../user-list/user-list-content/user-participants/user-options/container';
 
 const intlMessages = defineMessages({
   toggleUserListLabel: {
@@ -78,6 +78,9 @@ class NavBar extends PureComponent {
       mountModal,
       presentationTitle,
       amIModerator,
+      users,
+      meetingIsBreakout,
+      setEmojiStatus,
     } = this.props;
 
 
@@ -97,6 +100,7 @@ class NavBar extends PureComponent {
             {!isExpanded ? null
               : <Icon iconName="left_arrow" className={styles.arrowLeft} />
             }
+
             <Button
               data-test="userListToggleButton"
               onClick={NavBar.handleToggleUserList}
@@ -111,28 +115,36 @@ class NavBar extends PureComponent {
               accessKey={TOGGLE_USERLIST_AK}
             />
 
+            {!amIModerator ? null
+              : <UserOptionsContainer 
+                  users={ users }
+                  setEmojiStatus={ setEmojiStatus }
+                  meetingIsBreakout={ meetingIsBreakout }
+              />
+            }
+
             <Button
-               ghost
-               circle
-               className={cx(toggleBtnClasses)}
-               onClick={() => null}
-               customIcon={<img src="svgs/collect.svg" width="16" height="16"/>}
+              ghost
+              circle
+              className={cx(toggleBtnClasses)}
+              onClick={() => null}
+              customIcon={<img src="svgs/collect.svg" width="16" height="16"/>}
             />
 
             <Button
-               ghost
-               circle
-               className={cx(toggleBtnClasses)}
-               onClick={() => null}
-               customIcon={<img src="svgs/face.svg" width="16" height="16"/>}
+              ghost
+              circle
+              className={cx(toggleBtnClasses)}
+              onClick={() => null}
+              customIcon={<img src="svgs/face.svg" width="16" height="16"/>}
             />
 
             <Button
-               ghost
-               circle
-               className={cx(toggleBtnClasses)}
-               onClick={() => null}
-               customIcon={<img src="svgs/heart.svg" width="16" height="16"/>}
+              ghost
+              circle
+              className={cx(toggleBtnClasses)}
+              onClick={() => null}
+              customIcon={<img src="svgs/heart.svg" width="16" height="16"/>}
             />
             {isExpanded ? null
               : <Icon iconName="right_arrow" className={styles.arrowRight} />
