@@ -30,13 +30,13 @@ const intlMessages = defineMessages({
 });
 
 const propTypes = {
-  presentationTitle: PropTypes.string,
+  // presentationTitle: PropTypes.string,
   hasUnreadMessages: PropTypes.bool,
   shortcuts: PropTypes.string,
 };
 
 const defaultProps = {
-  presentationTitle: 'Default Room Title',
+  // presentationTitle: 'Default Room Title',
   hasUnreadMessages: false,
   shortcuts: '',
 };
@@ -76,7 +76,7 @@ class NavBar extends PureComponent {
       intl,
       shortcuts: TOGGLE_USERLIST_AK,
       mountModal,
-      presentationTitle,
+      // presentationTitle,
       amIModerator,
       users,
       meetingIsBreakout,
@@ -90,7 +90,6 @@ class NavBar extends PureComponent {
 
     let ariaLabel = intl.formatMessage(intlMessages.toggleUserListAria);
     ariaLabel += hasUnreadMessages ? (` ${intl.formatMessage(intlMessages.newMessages)}`) : '';
-
 
 
     return (
@@ -116,11 +115,13 @@ class NavBar extends PureComponent {
             />
 
             {!amIModerator ? null
-              : <UserOptionsContainer 
-                  users={ users }
-                  setEmojiStatus={ setEmojiStatus }
-                  meetingIsBreakout={ meetingIsBreakout }
-              />
+              : (
+                <UserOptionsContainer
+                  users={users}
+                  setEmojiStatus={setEmojiStatus}
+                  meetingIsBreakout={meetingIsBreakout}
+                />
+              )
             }
 
             <Button
@@ -128,7 +129,7 @@ class NavBar extends PureComponent {
               circle
               className={cx(toggleBtnClasses)}
               onClick={() => null}
-              customIcon={<img src="svgs/collect.svg" width="16" height="16"/>}
+              customIcon={<img src="svgs/collect.svg" alt="" width="16" height="16" />}
             />
 
             <Button
@@ -136,7 +137,7 @@ class NavBar extends PureComponent {
               circle
               className={cx(toggleBtnClasses)}
               onClick={() => null}
-              customIcon={<img src="svgs/face.svg" width="16" height="16"/>}
+              customIcon={<img src="svgs/face.svg" alt="" width="16" height="16" />}
             />
 
             <Button
@@ -144,14 +145,14 @@ class NavBar extends PureComponent {
               circle
               className={cx(toggleBtnClasses)}
               onClick={() => null}
-              customIcon={<img src="svgs/heart.svg" width="16" height="16"/>}
+              customIcon={<img src="svgs/heart.svg" alt="" width="16" height="16" />}
             />
             {isExpanded ? null
               : <Icon iconName="right_arrow" className={styles.arrowRight} />
             }
           </div>
           <div className={styles.center}>
-            <h1 className={styles.presentationTitle}>{"BBB"}</h1>
+            <h1 className={styles.presentationTitle}>BBB</h1>
 
             <RecordingIndicator
               mountModal={mountModal}

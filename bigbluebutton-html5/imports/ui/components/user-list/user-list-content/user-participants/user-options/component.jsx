@@ -4,11 +4,8 @@ import { defineMessages, injectIntl } from 'react-intl';
 import _ from 'lodash';
 import { withModalMounter } from '/imports/ui/components/modal/service';
 import Button from '/imports/ui/components/button/component';
-import Dropdown from '/imports/ui/components/dropdown/component';
-import DropdownTrigger from '/imports/ui/components/dropdown/trigger/component';
-import DropdownContent from '/imports/ui/components/dropdown/content/component';
-import DropdownList from '/imports/ui/components/dropdown/list/component';
-import DropdownListItem from '/imports/ui/components/dropdown/list/item/component';
+import cx from 'classnames';
+import NavBarStyles from '../nav-bar/styles';
 import LockViewersContainer from '/imports/ui/components/lock-viewers/container';
 import BreakoutRoom from '/imports/ui/components/actions-bar/create-breakout-room/container';
 import CaptionsService from '/imports/ui/components/captions/service';
@@ -229,79 +226,106 @@ class UserOptions extends PureComponent {
       && hasBreakoutRoom
       && getUsersNotAssigned(users).length;
 
+    const toggleBtnClasses = {};
+    toggleBtnClasses[NavBarStyles.btn] = true;
+
     this.menuItems = _.compact([
       (isMeteorConnected ? (
-        <DropdownListItem
+        <Button
+          ghost
+          circle
           key={this.clearStatusId}
           icon="clear_status"
-          label={"Limpar ícones de status"}
+          label="Limpar ícones de status"
           description={intl.formatMessage(intlMessages.clearAllDesc)}
           onClick={toggleStatus}
+          className={cx(toggleBtnClasses)}
         />) : null
       ),
       (!meetingIsBreakout && isMeteorConnected ? (
-        <DropdownListItem
+        <Button
+          ghost
+          circle
           key={this.muteAllId}
           icon={isMeetingMuted ? 'unmute' : 'mute'}
           label={intl.formatMessage(intlMessages[isMeetingMuted ? 'unmuteAllLabel' : 'muteAllLabel'])}
           description={intl.formatMessage(intlMessages[isMeetingMuted ? 'unmuteAllDesc' : 'muteAllDesc'])}
           onClick={toggleMuteAllUsers}
+          className={cx(toggleBtnClasses)}
         />) : null
       ),
       (!meetingIsBreakout && !isMeetingMuted && isMeteorConnected ? (
-        <DropdownListItem
+        <Button
+          ghost
+          circle
           key={this.muteId}
           icon="mute"
-          label={"Só o apresentador pode falar"}
+          label="Só o apresentador pode falar"
           description={intl.formatMessage(intlMessages.muteAllExceptPresenterDesc)}
           onClick={toggleMuteAllUsersExceptPresenter}
+          className={cx(toggleBtnClasses)}
         />) : null
       ),
       (amIModerator
         ? (
-          <DropdownListItem
+          <Button
+            ghost
+            circle
             icon="download"
-            label={"Salvar nomes dos alunos"}
+            label="Salvar nomes dos alunos"
             key={this.saveUsersNameId}
             onClick={this.onSaveUserNames}
+            className={cx(toggleBtnClasses)}
           />)
         : null
       ),
       (!meetingIsBreakout && isMeteorConnected ? (
-        <DropdownListItem
+        <Button
+          ghost
+          circle
           key={this.lockId}
           icon="lock"
           label={intl.formatMessage(intlMessages.lockViewersLabel)}
           description={intl.formatMessage(intlMessages.lockViewersDesc)}
           onClick={() => mountModal(<LockViewersContainer />)}
+          className={cx(toggleBtnClasses)}
         />) : null
       ),
       (isMeteorConnected ? <DropdownListSeparator key={_.uniqueId('list-separator-')} /> : null),
       (canCreateBreakout && isMeteorConnected ? (
-        <DropdownListItem
+        <Button
+          ghost
+          circle
           key={this.createBreakoutId}
           icon="rooms"
           label={intl.formatMessage(intlMessages.createBreakoutRoom)}
           description={intl.formatMessage(intlMessages.createBreakoutRoomDesc)}
           onClick={this.onCreateBreakouts}
+          className={cx(toggleBtnClasses)}
         />) : null
       ),
       (canInviteUsers && isMeteorConnected ? (
-        <DropdownListItem
+        <Button
+          ghost
+          circle
           icon="rooms"
           label={intl.formatMessage(intlMessages.invitationItem)}
           key={this.createBreakoutId}
           onClick={this.onInvitationUsers}
+          className={cx(toggleBtnClasses)}
         />) : null
       ),
       (amIModerator && CaptionsService.isCaptionsEnabled() && isMeteorConnected
         ? (
-          <DropdownListItem
+          <Button
+            ghost
+            circle
             icon="closed_caption"
             label={intl.formatMessage(intlMessages.captionsLabel)}
             description={intl.formatMessage(intlMessages.captionsDesc)}
             key={this.captionsId}
             onClick={this.handleCaptionsClick}
+            className={cx(toggleBtnClasses)}
           />
         )
         : null),
