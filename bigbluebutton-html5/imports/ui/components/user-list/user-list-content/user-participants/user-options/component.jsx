@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { withModalMounter } from '/imports/ui/components/modal/service';
 import Button from '/imports/ui/components/button/component';
 import cx from 'classnames';
-import NavBarStyles from '../nav-bar/styles';
+import NavBarStyles from '/imports/ui/components/nav-bar/styles';
 import LockViewersContainer from '/imports/ui/components/lock-viewers/container';
 import BreakoutRoom from '/imports/ui/components/actions-bar/create-breakout-room/container';
 import CaptionsService from '/imports/ui/components/captions/service';
