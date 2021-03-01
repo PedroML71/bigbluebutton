@@ -234,6 +234,7 @@ class UserOptions extends PureComponent {
         <Button
           ghost
           circle
+          hideLabel
           key={this.clearStatusId}
           icon="clear_status"
           label="Limpar ícones de status"
@@ -246,6 +247,7 @@ class UserOptions extends PureComponent {
         <Button
           ghost
           circle
+          hideLabel
           key={this.muteAllId}
           icon={isMeetingMuted ? 'unmute' : 'mute'}
           label={intl.formatMessage(intlMessages[isMeetingMuted ? 'unmuteAllLabel' : 'muteAllLabel'])}
@@ -258,6 +260,7 @@ class UserOptions extends PureComponent {
         <Button
           ghost
           circle
+          hideLabel
           key={this.muteId}
           icon="mute"
           label="Só o apresentador pode falar"
@@ -271,6 +274,7 @@ class UserOptions extends PureComponent {
           <Button
             ghost
             circle
+            hideLabel
             icon="download"
             label="Salvar nomes dos alunos"
             key={this.saveUsersNameId}
@@ -283,6 +287,7 @@ class UserOptions extends PureComponent {
         <Button
           ghost
           circle
+          hideLabel
           key={this.lockId}
           icon="lock"
           label={intl.formatMessage(intlMessages.lockViewersLabel)}
@@ -291,11 +296,11 @@ class UserOptions extends PureComponent {
           className={cx(toggleBtnClasses)}
         />) : null
       ),
-      (isMeteorConnected ? <DropdownListSeparator key={_.uniqueId('list-separator-')} /> : null),
       (canCreateBreakout && isMeteorConnected ? (
         <Button
           ghost
           circle
+          hideLabel
           key={this.createBreakoutId}
           icon="rooms"
           label={intl.formatMessage(intlMessages.createBreakoutRoom)}
@@ -308,6 +313,7 @@ class UserOptions extends PureComponent {
         <Button
           ghost
           circle
+          hideLabel
           icon="rooms"
           label={intl.formatMessage(intlMessages.invitationItem)}
           key={this.createBreakoutId}
@@ -320,6 +326,7 @@ class UserOptions extends PureComponent {
           <Button
             ghost
             circle
+            hideLabel
             icon="closed_caption"
             label={intl.formatMessage(intlMessages.captionsLabel)}
             description={intl.formatMessage(intlMessages.captionsDesc)}
