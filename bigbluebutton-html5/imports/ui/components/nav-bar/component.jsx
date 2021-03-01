@@ -12,7 +12,7 @@ import Button from '../button/component';
 import RecordingIndicator from './recording-indicator/container';
 import TalkingIndicatorContainer from '/imports/ui/components/nav-bar/talking-indicator/container';
 import SettingsDropdownContainer from './settings-dropdown/container';
-
+import UserOptionsContainer from '../user-list/user-list-content/user-participants/user-options/container';
 
 const intlMessages = defineMessages({
   toggleUserListLabel: {
@@ -30,13 +30,13 @@ const intlMessages = defineMessages({
 });
 
 const propTypes = {
-  presentationTitle: PropTypes.string,
+  // presentationTitle: PropTypes.string,
   hasUnreadMessages: PropTypes.bool,
   shortcuts: PropTypes.string,
 };
 
 const defaultProps = {
-  presentationTitle: 'Default Room Title',
+  // presentationTitle: 'Default Room Title',
   hasUnreadMessages: false,
   shortcuts: '',
 };
@@ -76,8 +76,11 @@ class NavBar extends PureComponent {
       intl,
       shortcuts: TOGGLE_USERLIST_AK,
       mountModal,
-      presentationTitle,
+      // presentationTitle,
       amIModerator,
+      users,
+      meetingIsBreakout,
+      setEmojiStatus,
     } = this.props;
 
 
@@ -89,7 +92,6 @@ class NavBar extends PureComponent {
     ariaLabel += hasUnreadMessages ? (` ${intl.formatMessage(intlMessages.newMessages)}`) : '';
 
 
-
     return (
       <div className={styles.navbar}>
         <div className={styles.top}>
@@ -97,6 +99,7 @@ class NavBar extends PureComponent {
             {!isExpanded ? null
               : <Icon iconName="left_arrow" className={styles.arrowLeft} />
             }
+
             <Button
               data-test="userListToggleButton"
               onClick={NavBar.handleToggleUserList}
@@ -111,35 +114,45 @@ class NavBar extends PureComponent {
               accessKey={TOGGLE_USERLIST_AK}
             />
 
+            {!amIModerator ? null
+              : (
+                <UserOptionsContainer
+                  users={users}
+                  setEmojiStatus={setEmojiStatus}
+                  meetingIsBreakout={meetingIsBreakout}
+                />
+              )
+            }
+
             <Button
-               ghost
-               circle
-               className={cx(toggleBtnClasses)}
-               onClick={() => null}
-               customIcon={<img src="svgs/collect.svg" width="16" height="16"/>}
+              ghost
+              circle
+              className={cx(toggleBtnClasses)}
+              onClick={() => null}
+              customIcon={<img src="svgs/collect.svg" alt="" width="16" height="16" />}
             />
 
             <Button
-               ghost
-               circle
-               className={cx(toggleBtnClasses)}
-               onClick={() => null}
-               customIcon={<img src="svgs/face.svg" width="16" height="16"/>}
+              ghost
+              circle
+              className={cx(toggleBtnClasses)}
+              onClick={() => null}
+              customIcon={<img src="svgs/face.svg" alt="" width="16" height="16" />}
             />
 
             <Button
-               ghost
-               circle
-               className={cx(toggleBtnClasses)}
-               onClick={() => null}
-               customIcon={<img src="svgs/heart.svg" width="16" height="16"/>}
+              ghost
+              circle
+              className={cx(toggleBtnClasses)}
+              onClick={() => null}
+              customIcon={<img src="svgs/heart.svg" alt="" width="16" height="16" />}
             />
             {isExpanded ? null
               : <Icon iconName="right_arrow" className={styles.arrowRight} />
             }
           </div>
           <div className={styles.center}>
-            <h1 className={styles.presentationTitle}>{"BBB"}</h1>
+            <h1 className={styles.presentationTitle}>BBB</h1>
 
             <RecordingIndicator
               mountModal={mountModal}

@@ -7,7 +7,7 @@ import { styles } from '/imports/ui/components/user-list/user-list-content/style
 import _ from 'lodash';
 import { findDOMNode } from 'react-dom';
 import UserListItemContainer from './user-list-item/container';
-import UserOptionsContainer from './user-options/container';
+// import UserOptionsContainer from './user-options/container';
 
 const propTypes = {
   compact: PropTypes.bool,
@@ -173,24 +173,18 @@ class UserParticipants extends Component {
     return (
       <div className={styles.userListColumn}>
         {
-          !compact
-            ? (
-              <div className={styles.container}>
-
-                {currentUser.role === ROLE_MODERATOR
-                  ? (
-                    <UserOptionsContainer {...{
-                      users,
-                      setEmojiStatus,
-                      meetingIsBreakout,
-                    }}
-                    />
-                  ) : null
-                }
-
-              </div>
-            )
-            : <hr className={styles.separator} />
+          // <div className={styles.container}>
+          //   {currentUser.role === ROLE_MODERATOR
+          //     ? (
+          //       <UserOptionsContainer {...{
+          //         users,
+          //         setEmojiStatus,
+          //         meetingIsBreakout,
+          //       }}
+          //       />
+          //     ) : null
+          //   }
+          // </div>
         }
         <div
           className={styles.scrollableList}

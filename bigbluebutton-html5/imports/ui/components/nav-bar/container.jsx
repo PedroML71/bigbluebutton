@@ -6,9 +6,10 @@ import Meetings from '/imports/api/meetings';
 import Users from '/imports/api/users';
 import Auth from '/imports/ui/services/auth';
 import getFromUserSettings from '/imports/ui/services/users-settings';
-import userListService from '../user-list/service';
+import UserListService from '../user-list/service';
 import Service from './service';
 import NavBar from './component';
+import { meetingIsBreakout } from '/imports/ui/components/app/service';
 
 const PUBLIC_CONFIG = Meteor.settings.public;
 const ROLE_MODERATOR = PUBLIC_CONFIG.user.role_moderator;
@@ -40,7 +41,7 @@ export default withTracker(() => {
   }
 
   const checkUnreadMessages = () => {
-    const activeChats = userListService.getActiveChats();
+    const activeChats = UserListService.getActiveChats();
     const hasUnreadMessages = activeChats
       .filter(chat => chat.userId !== Session.get('idChatOpen'))
       .some(chat => chat.unreadCounter > 0);
@@ -63,5 +64,8 @@ export default withTracker(() => {
     meetingId,
     presentationTitle: meetingTitle,
     hasUnreadMessages,
+    users: UserListService.getUsers(),
+    meetingIsBreakout: meetingIsBreakout(),
+    setEmojiStatus: UserListService.setEmojiStatus(),
   };
 })(NavBarContainer);
