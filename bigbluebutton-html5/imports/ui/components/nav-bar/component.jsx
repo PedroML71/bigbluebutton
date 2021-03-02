@@ -5,7 +5,7 @@ import cx from 'classnames';
 import { withModalMounter } from '/imports/ui/components/modal/service';
 import withShortcutHelper from '/imports/ui/components/shortcut-help/service';
 import getFromUserSettings from '/imports/ui/services/users-settings';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import Icon from '../icon/component';
 import { styles } from './styles.scss';
 import Button from '../button/component';
@@ -30,14 +30,23 @@ const intlMessages = defineMessages({
 });
 
 const propTypes = {
+  amIModerator: PropTypes.bool,
   // presentationTitle: PropTypes.string,
   hasUnreadMessages: PropTypes.bool,
+  meetingIsBreakout: PropTypes.bool,
+  intl: intlShape.isRequired,
+  isExpanded: PropTypes.bool,
+  setEmojiStatus: PropTypes.func.isRequired,
   shortcuts: PropTypes.string,
+  users: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const defaultProps = {
+  amIModerator: true,
   // presentationTitle: 'Default Room Title',
   hasUnreadMessages: false,
+  meetingIsBreakout: false,
+  isExpanded: true,
   shortcuts: '',
 };
 
@@ -114,16 +123,6 @@ class NavBar extends PureComponent {
               accessKey={TOGGLE_USERLIST_AK}
             />
 
-            {!amIModerator ? null
-              : (
-                <UserOptionsContainer
-                  users={users}
-                  setEmojiStatus={setEmojiStatus}
-                  meetingIsBreakout={meetingIsBreakout}
-                />
-              )
-            }
-
             {isExpanded ? null
               : <Icon iconName="right_arrow" className={styles.arrowRight} />
             }
@@ -140,6 +139,16 @@ class NavBar extends PureComponent {
             <SettingsDropdownContainer amIModerator={amIModerator} />
           </div>
         </div>
+        {!amIModerator ? null
+          : (
+            <UserOptionsContainer
+              users={users}
+              setEmojiStatus={setEmojiStatus}
+              meetingIsBreakout={meetingIsBreakout}
+              intl={intl}
+            />
+          )
+        }
         <div className={styles.bottom}>
           <TalkingIndicatorContainer amIModerator={amIModerator} />
         </div>

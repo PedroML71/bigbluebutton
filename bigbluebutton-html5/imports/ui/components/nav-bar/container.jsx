@@ -5,6 +5,7 @@ import { Session } from 'meteor/session';
 import Meetings from '/imports/api/meetings';
 import Users from '/imports/api/users';
 import Auth from '/imports/ui/services/auth';
+import intl from 'react-intl';
 import getFromUserSettings from '/imports/ui/services/users-settings';
 import UserListService from '../user-list/service';
 import Service from './service';
@@ -57,6 +58,7 @@ export default withTracker(() => {
 
   return {
     amIModerator,
+    intl,
     isExpanded,
     currentUserId: Auth.userID,
     processOutsideToggleRecording,
@@ -66,6 +68,6 @@ export default withTracker(() => {
     hasUnreadMessages,
     users: UserListService.getUsers(),
     meetingIsBreakout: meetingIsBreakout(),
-    setEmojiStatus: UserListService.setEmojiStatus(),
+    setEmojiStatus: UserListService.setEmojiStatus,
   };
 })(NavBarContainer);
