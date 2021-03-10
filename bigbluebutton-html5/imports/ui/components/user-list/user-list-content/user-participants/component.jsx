@@ -8,6 +8,7 @@ import _ from 'lodash';
 import { findDOMNode } from 'react-dom';
 import UserListItemContainer from './user-list-item/container';
 // import UserOptionsContainer from './user-options/container';
+import Settings from '/imports/ui/services/settings';
 
 const propTypes = {
   compact: PropTypes.bool,
@@ -109,7 +110,12 @@ class UserParticipants extends Component {
       requestUserInformation,
       currentUser,
       meetingIsBreakout,
+      usersVideo,
+      streams,
     } = this.props;
+
+    const { viewParticipantsWebcams } = Settings.dataSaving;
+    const showVideo = usersVideo.length > 0 && viewParticipantsWebcams;
 
     let index = -1;
 
@@ -132,6 +138,8 @@ class UserParticipants extends Component {
               requestUserInformation,
               currentUser,
               meetingIsBreakout,
+              showVideo,
+              streams,
             }}
             user={u}
             getScrollContainerRef={this.getScrollContainerRef}

@@ -516,17 +516,22 @@ class UserDropdown extends PureComponent {
       breakoutSequence,
       meetingIsBreakout,
       voiceUser,
+      showVideo,
+      streams,
     } = this.props;
+
+    const userWithCamera = current => streams.find(stream => current.userId === stream.userId);
 
     const { clientType } = user;
     const isVoiceOnly = clientType === 'dial-in-user';
 
     const iconUser = user.emoji !== 'none'
       ? (<Icon iconName={normalizeEmojiName(user.emoji)} />)
-      : (<Icon iconName={"user"} />);
+      : (<Icon iconName="user" />);
 
     const iconVoiceOnlyUser = (<Icon iconName="audio_on" />);
     const userIcon = isVoiceOnly ? iconVoiceOnlyUser : iconUser;
+    const noVideo = userInBreakout && !meetingIsBreakout ? breakoutSequence : userIcon;
 
     return (
       <UserAvatar
@@ -539,10 +544,11 @@ class UserDropdown extends PureComponent {
         noVoice={!voiceUser.isVoiceUser}
         color={user.color}
       >
-        {
-        userInBreakout
-        && !meetingIsBreakout
-          ? breakoutSequence : userIcon}
+        {showVideo
+          && userWithCamera(user.userId) !== undefined ? (
+            <VideoListItem />
+          ) : noVideo
+          }
       </UserAvatar>
     );
   }
