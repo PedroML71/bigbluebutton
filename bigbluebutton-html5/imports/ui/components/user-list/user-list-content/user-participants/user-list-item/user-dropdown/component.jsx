@@ -18,6 +18,7 @@ import { Session } from 'meteor/session';
 import { styles } from './styles';
 import UserName from '../user-name/component';
 import UserIcons from '../user-icons/component';
+import VideoListItem from '/imports/ui/components/video-provider/video-list/video-list-item/component';
 
 const messages = defineMessages({
   presenter: {
@@ -521,6 +522,7 @@ class UserDropdown extends PureComponent {
     } = this.props;
 
     const userWithCamera = current => streams.find(stream => current.userId === stream.userId);
+    const { cameraId } = userWithCamera(user.userId);
 
     const { clientType } = user;
     const isVoiceOnly = clientType === 'dial-in-user';
@@ -546,7 +548,13 @@ class UserDropdown extends PureComponent {
       >
         {showVideo
           && userWithCamera(user.userId) !== undefined ? (
-            <VideoListItem />
+            <VideoListItem
+              user={user.userId}
+              onMount
+              voiceUser={voiceUser}
+              cameraId={cameraId}
+              name={user.name}
+            />
           ) : noVideo
           }
       </UserAvatar>
